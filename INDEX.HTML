@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shibam Sadhukhan - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        section {
+            padding: 80px 5%;
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, h4 {
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .btn-cv {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #3498db;
+            color: white;
+            border-radius: 5px;
+            margin-right: 15px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-cv:hover {
+            background: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .titles {
+            margin-bottom: 30px;
+        }
+
+        .titles h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .titles h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: #3498db;
+        }
+
+        .titles h3 {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            font-weight: 400;
+        }
+
+        /* Header & Navigation */
+        #header {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(44, 62, 80, 0.9);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo h1 a {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .nav-menu ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-menu ul li a {
+            color: white;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-menu ul li a:hover {
+            color: #3498db;
+        }
+
+        .nav-menu ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #3498db;
+            transition: width 0.3s;
+        }
+
+        .nav-menu ul li a:hover::after {
+            width: 100%;
+        }
+
+        .fa-bars, .fa-xmark {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Home Content */
+        .home-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 120px;
+            min-height: 100vh;
+        }
+
+        .home-content .left {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .home-content .right {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .hi {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        .name {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+        }
+
+        .name span {
+            color: #3498db;
+        }
+
+        .profession {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #ecf0f1;
+        }
+
+        .desc {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .right a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .right a:hover {
+            background: #3498db;
+            transform: translateY(-5px);
+        }
+
+        /* About Section */
+        #about {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+
+        #about .left {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        #about .left img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        #about .right {
+            flex: 1;
+        }
+
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .tab-links {
+            padding: 10px 20px;
+            background: #ecf0f1;
+            cursor: pointer;
+            border-radius: 5px 5px 0 0;
+            transition: all 0.3s;
+        }
+
+        .tab-links.active-link {
+            background: #3498db;
+            color: white;
+        }
+
+        .tab-contents {
+            display: none;
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 0 5px 5px 5px;
+        }
+
+        .tab-contents.active-tab {
+            display: block;
+        }
+
+        .edu li {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .edu li:last-child {
+            border-bottom: none;
+        }
+
+        /* Skills Section */
+        #skills {
+            background: #f5f5f5;
+        }
+
+        #skills .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        #skills .header h1 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        #skills .header h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #3498db;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .skill-box:hover {
+            transform: translateY(-10px);
+        }
+
+        .skill-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .skill-title .img {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .skill-icon {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: #2c3e50;
+            color: white;
+        }
+
+        #contact .titles h2 {
+            color: white;
+        }
+
+        #contact .titles h2::after {
+            background: #3498db;
+        }
+
+        #contact .titles h3 {
+            color: #bdc3c7;
+        }
+
+        .contact {
+            display: flex;
+            gap: 50px;
+        }
+
+        .contact-left {
+            flex: 1;
+        }
+
+        .contact-left form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-left input, .contact-left textarea {
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+        }
+
+        .contact-left input::placeholder, .contact-left textarea::placeholder {
+            color: #bdc3c7;
+        }
+
+        .contact-left button {
+            padding: 15px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .contact-left button:hover {
+            background: #2980b9;
+        }
+
+        .vl {
+            width: 1px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .col {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .col i {
+            font-size: 1.5rem;
+            color: #3498db;
+        }
+
+        .info h4 {
+            color: white;
+            margin-bottom: 5px;
+        }
+
+        .info p {
+            color: #bdc3c7;
+            margin: 0;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bdc3c7;
+        }
+
+        /* Animations */
+        .anim {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.5s ease;
+        }
+
+        .animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .home-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 50px;
+            }
+
+            .home-content .right {
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            #about {
+                flex-direction: column;
+            }
+
+            .contact {
+                flex-direction: column;
+            }
+
+            .vl {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu ul {
+                position: fixed;
+                top: 0;
+                right: -200px;
+                width: 200px;
+                height: 100vh;
+                background: #2c3e50;
+                flex-direction: column;
+                padding-top: 50px;
+                transition: right 0.5s;
+                z-index: 1001;
+            }
+
+            .nav-menu ul li {
+                margin: 15px 0;
+                text-align: center;
+            }
+
+            .fa-bars, .fa-xmark {
+                display: block;
+                z-index: 1002;
+            }
+
+            .fa-xmark {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+
+            .name {
+                font-size: 2.5rem;
+            }
+
+            .profession {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            section {
+                padding: 60px 5%;
+            }
+
+            .home-content {
+                padding-top: 100px;
+            }
+
+            .name {
+                font-size: 2rem;
+            }
+
+            .btn-cv {
+                display: block;
+                width: 100%;
+                margin-right: 0;
+            }
+
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <!-- Header Section -->
+        <section id="header">
+            <nav>
+                <div class="logo">
+                    <h1><a href="#header">SS_02</a></h1>
+                </div>
+                <div class="nav-menu">
+                    <ul id="sidemenu">
+                        <li><a href="#header">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <i class="fas fa-xmark" onclick="closeMenu()"></i>
+                    </ul>
+                    <i class="fas fa-bars" onclick="openMenu()"></i>
+                </div>
+            </nav>
+
+            <div class="home-content">
+                <div class="left">
+                    <h1 class="hi anim">Hi there,</h1>
+                    <h1 class="name anim">I am Suvendu <span>Mondal</span></h1>
+                    <h2 class="profession anim">Student & Developer</h2>
+                    <p class="desc anim">
+                        As a student, I'm constantly driven by the desire to learn and grow. My passion lies at the intersection of web development, data science, cyber security, and AI/ML. Through my journey, I strive to not only master these fields but also contribute meaningfully to their advancement.
+                    </p>
+                    <a href="#" class="btn-cv anim">Download CV</a>
+                    <a href="#" class="btn-cv anim">Explore CV</a>
+                </div>
+                <div class="right anim">
+                    <a href="https://www.facebook.com/share/1BgccvV93A/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#" target="_blank"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <div class="left">
+                <img src="main.png" alt="SUVENDU MONDAL">
+            </div>
+            <div class="right">
+                <div class="titles">
+                    <h2>About Me</h2>
+                    <h3>Student & Aspiring Developer</h3>
+                    <p>
+                        I am an enthusiastic learner with a keen interest in exploring the vast possibilities that technology offers. Whether it's crafting elegant web solutions, delving into the depths of data to uncover meaningful insights, fortifying digital landscapes against cyber threats, or harnessing the power of artificial intelligence and machine learning, I am driven by a relentless curiosity and a hunger for knowledge.
+                    </p>
+                </div>
+                <div class="tabs">
+                    <div class="tab-links active-link" onclick="openTab('education')">Education</div>
+                </div>
+                <div class="tab-contents active-tab" id="education">
+                    <ul class="edu">
+                        <li>
+                            <h4>2020 - 2021</h4>
+                            <p>Secondary Examination (83%)</p>
+                            <p>Board: CBSE</p>
+                        </li>
+                        <li>
+                            <h4>2022 - 2023</h4>
+                            <p>Higher Secondary (77.6%)</p>
+                            <p>Board: CBSE</p>
+                        </li>
+                        <li>
+                            <h4>2023 - Current</h4>
+                            <p>BCA</p>
+                            <p>Eminent College of Management & Technology</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <div class="header">
+                <h1>My Skills</h1>
+            </div>
+            <div class="container">
+                <div class="skill-box">
+                    <div class="skill-title">
+                        <div class="img">
+                            <img src="https://i.postimg.cc/sD2sGqKS/OIP.jpg" alt="HTML" class="skill-icon">
+                        </div>
+                        <h3>HTML 5</h3>
+                    </div>
+                    <p>Proficient in creating semantic and accessible web structures using the latest HTML5 standards.</p>
+                </div>
+                <div class="skill-box">
+                    <div class="skill-title">
+                        <div class="img">
+                            <img src="https://i.postimg.cc/4xJtcJqP/OIP.jpg" alt="CSS" class="skill-icon">
+                        </div>
+                        <h3>CSS 3</h3>
+                    </div>
+                    <p>Skilled in modern CSS techniques including Flexbox, Grid, animations, and responsive design.</p>
+                </div>
+                <div class="skill-box">
+                    <div class="skill-title">
+                        <div class="img">
+                            <img src="https://i.postimg.cc/yd7z1Z2s/js.png" alt="JavaScript" class="skill-icon">
+                        </div>
+                        <h3>JavaScript</h3>
+                    </div>
+                    <p>Experience in building interactive web applications and implementing client-side functionality.</p>
+                </div>
+                <div class="skill-box">
+                    <div class="skill-title">
+                        <div class="img">
+                            <img src="https://i.postimg.cc/mZ8Trmbq/python.png" alt="Python" class="skill-icon">
+                        </div>
+                        <h3>Python</h3>
+                    </div>
+                    <p>Knowledgeable in Python programming for various applications including web development and data analysis.</p>
+                </div>
+                <div class="skill-box">
+                    <div class="skill-title">
+                        <div class="img">
+                            <img src="https://i.postimg.cc/6pS3pYhw/cpp.png" alt="C++" class="skill-icon">
+                        </div>
+                        <h3>C++</h3>
+                    </div>
+                    <p>Understanding of C++ programming concepts and object-oriented programming principles.</p>
+                </div>
+                <div class="skill-box">
+                    <div class="skill-title">
+                        <div class="img">
+                            <img src="https://i.postimg.cc/mgZMHXMH/c.png" alt="C" class="skill-icon">
+                        </div>
+                        <h3>C</h3>
+                    </div>
+                    <p>Familiar with C programming language fundamentals and procedural programming concepts.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="titles">
+                <h2>Contact Me</h2>
+                <h3>GET IN TOUCH</h3>
+            </div>
+            <div class="contact">
+                <div class="contact-left">
+                    <form id="contactForm">
+                        <input type="text" placeholder="Enter Name" required>
+                        <input type="email" placeholder="Enter email" required>
+                        <textarea placeholder="Message..." rows="5" required></textarea>
+                        <button type="submit">Send message <i class="fa-solid fa-circle-arrow-right"></i></button>
+                    </form>
+                </div>
+                <div class="vl"></div>
+                <div class="contact-right">
+                    <div class="col address">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <div class="info">
+                            <h4>Address</h4>
+                            <p>Kolkata, West Bengal</p>
+                        </div>
+                    </div>
+                    <div class="col address">
+                        <i class="fa-solid fa-phone"></i>
+                        <div class="info">
+                            <h4>Phone</h4>
+                            <p>+91 8391857548</p>
+                        </div>
+                    </div>
+                    <div class="col address">
+                        <i class="fa-solid fa-envelope"></i>
+                        <div class="info">
+                            <h4>Email</h4>
+                            <p>sadhukhan@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer>
+                Copyright &copy; 2024 All rights reserved | Made by Shibam Sadhukhan 
+            </footer>
+        </section>
+    </div>
+
+    <script>
+        // Mobile menu functionality
+        let sideMenu = document.getElementById('sidemenu');
+
+        function openMenu() {
+            sideMenu.style.right = "0";
+        }
+
+        function closeMenu() {
+            sideMenu.style.right = "-200px";
+        }
+
+        // Scroll animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const animElements = document.querySelectorAll('.anim');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animElements.forEach(el => observer.observe(el));
+            
+            // Form submission
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! I will get back to you soon.');
+                this.reset();
+            });
+        });
+
+        // Tab functionality
+        function openTab(tabName) {
+            // This function can be expanded if you add more tabs in the future
+            document.getElementById('education').classList.add('active-tab');
+        }
+    </script>
+</body>
+</html>
